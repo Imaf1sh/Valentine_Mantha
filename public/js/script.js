@@ -16,46 +16,28 @@ const answers_no = {
         "I am begging you to stop!",
         "Ok, Let's just start over.."
     ],
-    french: [
-        "Non",
-        "Tu es sûr ?",
-        "Tu es vraiment sûr ??",
-        "Tu es vraiment vraiment sûr ???",
-        "Réfléchis encore?",
-        "Tu ne crois pas aux deuxièmes chances ?",
-        "Pourquoi tu es si froid?",
-        "Peut-être, on peut en parler ?",
-        "Je ne vais pas demander encore une fois!",
-        "D'accord, maintenant ca me fait mal!",
-        "Tu es juste méchant!",
-        "Pourquoi tu me fais ça?",
-        "Donnez-moi une chance plz!",
-        "Je te supplie d'arrêter!",
-        "D'accord, recommençons.."
-    ],
-    thai: [
-        "ไม่อ่ะ",
-        "แน่ใจจริงๆหรอคะ?",
-        "แน่ใจจริงๆ จริงๆนะคะ?",
-        "อย่าบอกนะว่านี่แน่ใจสุดๆแล้วจริงๆ ?",
-        "ลองคิดดูอีกทีหน่อยสิคะ..",
-        "ขอโอกาศที่สองทีค่ะ..",
-        "อย่าเย็นชาสิคะ กระซิกๆ",
-        "ขอร้องนะคะ",
-        "น้าาาๆๆๆๆๆ",
-        "เราจะร้องไห้เอานะ กระซิกๆ",
-        "จะเอางี้ๆจริงหรอคะ",
-        "ฮือออออ",
-        "ขอโอกาศครั้งที่สองที่ค่ะ!",
-        "ขอร้องละค่าาา",
-        "โอเคค่ะ.. งั้นเริ่มใหม่ !"
+    tagalog: [
+        "Hindi",
+        "Sigurado ka ba?",
+        "Siguradong-sigurado ka na ba??",
+        "Talaga bang siguradong-sigurado ka na???",
+        "Pag-isipan mo uli?",
+        "Di ka naniniwala sa second chances?",
+        "Bakit ang cold mo naman?",
+        "Pwede naman nating pag-usapan 'yan?",
+        "Hindi na ako magtatanong ulit!",
+        "Ok masakit na sa damdamin ah!",
+        "Ang sama mo naman!",
+        "Bakit mo ginagawa sa'kin 'to?",
+        "Pagbigyan mo naman ako oh!",
+        "Nagmamakaawa ako, tama na!",
+        "Sige na, simulan natin uli.."
     ]
 };
 
 answers_yes = {
     "english": "Yes",
-    "french": "Oui",
-    "Thailand": "เย่ คืนดีกันแล้วน้า"
+    "tagalog": "Oo"
 }
 
 let language = "english"; // Default language is English
@@ -93,6 +75,39 @@ no_button.addEventListener('click', () => {
         yes_button.style.width = "50px";
         size = 50;
     }
+
+
+    // Bubble animation
+    no_button.classList.add('bubble');
+
+    // Reset dimensions to auto to measure natural size
+    no_button.style.width = 'auto';
+    no_button.style.height = 'auto';
+
+    // Force measure
+    const width = no_button.offsetWidth;
+    const height = no_button.offsetHeight;
+    const diameter = Math.max(width, height) + 10; // slightly larger for comfort
+
+    no_button.style.width = `${diameter}px`;
+    no_button.style.height = `${diameter}px`;
+
+    const buffer = 50; // Increased buffer for safety (account for shadows etc)
+    const viewportWidth = document.documentElement.clientWidth;
+    const viewportHeight = document.documentElement.clientHeight;
+
+    const maxWidth = viewportWidth - diameter - buffer;
+    const maxHeight = viewportHeight - diameter - buffer;
+
+    // Ensure we don't get negative values if the screen is too small
+    const safeMaxWidth = Math.max(0, maxWidth);
+    const safeMaxHeight = Math.max(0, maxHeight);
+
+    const randomX = Math.random() * safeMaxWidth + buffer / 2;
+    const randomY = Math.random() * safeMaxHeight + buffer / 2;
+
+    no_button.style.left = `${randomX}px`;
+    no_button.style.top = `${randomY}px`;
 });
 
 yes_button.addEventListener('click', () => {
@@ -123,10 +138,8 @@ function changeLanguage() {
 
     // Update question heading
     const questionHeading = document.getElementById("question-heading");
-    if (language === "french") {
-        questionHeading.textContent = "Tu veux être mon valentin?";
-    } else if (language === "thai") {
-        questionHeading.textContent = "คืนดีกับเราได้อ่ะป่าว?";
+    if (language === "tagalog") {
+        questionHeading.textContent = "Pwede bang maging Valentine kita?";
     } else {
         questionHeading.textContent = "Will you be my valentine?";
     }
@@ -143,10 +156,8 @@ function changeLanguage() {
 
     // Update success message
     const successMessage = document.getElementById("success-message");
-    if (language === "french") {
-        successMessage.textContent = "Yepppie, à bientôt :3";
-    } else if (language === "thai") {
-        successMessage.textContent = "ฮูเร่ คืนดีกันแล้วน้า :3";
+    if (language === "tagalog") {
+        successMessage.textContent = "Yieee, kita-kits soon :3";
     } else {
         successMessage.textContent = "Yepppie, see you sooonnn :3";
     }
