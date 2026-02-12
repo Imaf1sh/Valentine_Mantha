@@ -161,8 +161,8 @@ function changeLanguage() {
     // Update success message
     const successMessage = document.getElementById("success-message");
     if (language === "tagalog") {
-        successMessage.textContent = "Yieee, kita-kits soon :3";
+        successMessage.textContent = "Yippie, Mahal kita aking Tangi❤😘";
     } else {
-        successMessage.textContent = "Yepppie, see you sooonnn :3";
+        successMessage.textContent = "Yippie, I Love You my Tangi❤😘";
     }
 }
