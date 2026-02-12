@@ -91,6 +91,24 @@ h1#question-heading {
     margin: 20px 0;
 }
 
+.message-container {
+    height: 30px;
+    /* Fixed height to prevent layout shifts */
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#rejection-message {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ff6b6b;
+    margin: 0;
+    transition: opacity 0.3s ease;
+}
+
 .message {
     display: none;
 }

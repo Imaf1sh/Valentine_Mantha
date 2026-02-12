@@ -64,11 +64,12 @@ no_button.addEventListener('click', () => {
     let total = answers_no[language].length;
     // change button text
     if (i < total - 1) {
-        no_button.innerHTML = answers_no[language][i];
+        document.getElementById('rejection-message').textContent = answers_no[language][i];
         i++;
     } else if (i === total - 1) {
         alert(answers_no[language][i]);
         i = 1;
+        document.getElementById('rejection-message').textContent = ""; // Reset message
         no_button.innerHTML = answers_no[language][0];
         yes_button.innerHTML = answers_yes[language];
         yes_button.style.height = "50px";
@@ -148,11 +149,10 @@ function changeLanguage() {
     yes_button.innerHTML = answers_yes[language];
 
     // Reset button text to first in the new language
-    if (clicks === 0) {
-        no_button.innerHTML = answers_no[language][0];
-    } else {
-        no_button.innerHTML = answers_no[language][clicks];
-    }
+    no_button.innerHTML = answers_no[language][0];
+
+    // Clear rejection message on language change
+    document.getElementById('rejection-message').textContent = "";
 
     // Update success message
     const successMessage = document.getElementById("success-message");
