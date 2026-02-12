@@ -122,6 +122,8 @@ yes_button.addEventListener('click', () => {
     // show message div
     let message = document.getElementsByClassName('message')[0];
     message.style.display = "block";
+    // clear rejection message
+    document.getElementById('rejection-message').textContent = "";
 });
 
 function refreshBanner() {
