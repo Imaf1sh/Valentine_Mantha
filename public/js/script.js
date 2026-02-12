@@ -124,6 +124,8 @@ yes_button.addEventListener('click', () => {
     message.style.display = "block";
     // clear rejection message
     document.getElementById('rejection-message').textContent = "";
+    // hide question heading
+    document.getElementById('question-heading').style.display = 'none';
 });
 
 function refreshBanner() {
